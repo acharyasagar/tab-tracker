@@ -3,8 +3,11 @@ const
   express = require('express'),
   morgan = require('morgan'),
   app = express(),
-  routes = require('./routes/index')
+  routes = require('./routes')
+  
 /* eslint-enable */
+const { sequelize } = require('./models')
+const config = require('./config/config')
 
 // Server Middlewares
 app.use(morgan('combined'))
@@ -13,4 +16,7 @@ app.use(morgan('combined'))
 routes(app)
 
 // Start the server
-app.listen(process.env.PORT || 8081, () => console.log('Server started at port 8081'))
+sequelize.sync()
+  .then(() => {
+    app.listen(config.port, () => console.log(`Server started at port ${config.port}`))
+  })
