@@ -11,5 +11,8 @@ module.exports = {
         timestamps: false
       }
     }
+  },
+  authentication: {
+    jwtSecret: process.env.JWT_SECRET || 'd3v-s3cr3t-k3y'
   }
 }

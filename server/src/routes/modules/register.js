@@ -8,8 +8,6 @@ const
   authenticationControllerPolicy = require('../../policies/AuthenticationControllerPolicy')
 
 /* eslint-enable */
-router.use(bodyParser.json())
-router.use(cors())
 router.route('/')
   .post(authenticationControllerPolicy.register, authenticationController.register)
 

@@ -15,8 +15,16 @@ app.use(morgan('combined'))
 // routes
 routes(app)
 
+// console colors
+global.chalk = require('chalk')
+
+
 // Start the server
 sequelize.sync()
   .then(() => {
-    app.listen(config.port, () => console.log(`Server started at port ${config.port}`))
+    app.listen(config.port, () => {
+      console.log()
+      console.log(global.chalk.green(`Server started at port ${config.port}`))
+      console.log()
+    })
   })

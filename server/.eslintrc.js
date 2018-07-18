@@ -8,6 +8,8 @@ module.exports = {
         "eqeqeq": 0,
         "no-console": 0,
         "comma-dangle": 0,
-        "arrow-body-style": 0
+        "arrow-body-style": 0,
+        "consistent-return": 0,
+        "func-names": 0
     }
 }

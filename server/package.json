@@ -10,14 +10,17 @@
   "author": "Sagar Acharya",
   "license": "MIT",
   "dependencies": {
+    "argon2": "^0.19.3",
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "joi": "^13.2.0",
+    "jsonwebtoken": "^8.3.0",
     "morgan": "^1.9.0",
     "pg": "^7.4.1",
     "sequelize": "^4.37.6",
-    "sqlite3": "^4.0.0"
+    "sqlite3": "^4.0.0",
+    "chalk": "^2.4.1"
   },
   "devDependencies": {
     "eslint": "^4.19.1",
