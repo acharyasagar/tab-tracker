@@ -23,8 +23,6 @@ global.chalk = require('chalk')
 sequelize.sync()
   .then(() => {
     app.listen(config.port, () => {
-      console.log()
-      console.log(global.chalk.green(`Server started at port ${config.port}`))
-      console.log()
+      console.log(global.chalk.green(` \n Server started at port ${config.port} \n`))
     })
   })

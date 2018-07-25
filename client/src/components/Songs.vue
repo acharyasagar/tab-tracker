@@ -1,0 +1,143 @@
+<template>
+  <div class="songs">
+    <panel title="Songs" width="80vw">
+      <div slot="body">
+        <div v-for="song in songs" :key="song.id" class="song-list">
+          <el-row :gutter="20" class="song-list__item">
+            <el-col :span="18" class="song-metadata">
+              <div class="song-title">
+                {{ song.title }}
+              </div>
+              <div class="song-artist">
+                {{ song.artist }}
+              </div>
+              <div class="song-album">
+                {{ song.album }}
+              </div>
+              <div>
+                <el-button type="primary" size="medium">View More</el-button>
+              </div>
+            </el-col>
+            <el-col :span="6">
+              <img :src="song.albumImage" class="album-image" alt="Album Image">
+            </el-col>
+          </el-row>
+        </div>
+        <button class="icon" @click="navigateTo('songs/new')">
+          <svg width="4rem" height="4rem"> 
+            <circle 
+              class="plus-icon"
+              cx="20" 
+              cy="20" 
+              r="19" 
+              fill="#eff0f2"
+              stroke="#fff" 
+              stroke-width="2" 
+            />
+            <line
+              x1="20" 
+              y1="10" 
+              x2="20" 
+              y2="30" 
+              stroke="rgb(15, 124, 198)"
+              stroke-width= "2"
+            />
+            <line
+              x1="10" 
+              y1="20" 
+              x2="30" 
+              y2="20" 
+              stroke="rgb(15, 124, 198)"
+              stroke-width= "2"
+            />
+          </svg>
+        </button>
+      </div>
+    </panel>
+    
+  </div>
+</template>
+
+<script>
+import Panel from '@/components/Panel'
+import songsService from '@/services/songsService'
+
+export default {
+  name: 'Songs',
+  components: { Panel },
+  data () {
+    return {
+      songs: null
+    }
+  },
+  methods: {
+    navigateTo (route) {
+      this.$router.push({
+        name: route
+      })
+    }
+  },
+  async created () {
+    // Go fetch the default songs 
+    this.songs = (await songsService.index()).data
+  } 
+}
+</script>
+
+<style scoped>
+  .songs {
+    margin: 7.5rem auto;
+  }
+
+  .icon {
+    display: block;
+    height: 4rem;
+    width: 4rem;
+    position: relative;
+    border: 0;
+    background: #eff0f2;
+    border-radius: 50%;
+    left: 97%;
+    top: 6.4rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  }
+  .icon:focus {
+    outline: none;
+  }
+  .icon:hover {
+    border-radius: 50%;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  }
+  .song-list__item {
+    overflow: hidden;
+    box-sizing: border-box;
+    height: 17rem;
+    margin-bottom: 0.5rem;
+    background: rgba(242, 243, 244, 0.8);
+    padding: 1rem;
+  }
+  .song-metadata {
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .song-title {
+    font-size: 3rem;
+  }
+
+  .song-artist {
+    font-size: 2.4rem;
+  }
+  .song-album {
+    font-size: 1.8rem;
+  }
+
+  .album-image {
+    width: auto;
+    height: 15rem;
+  }
+</style>
+

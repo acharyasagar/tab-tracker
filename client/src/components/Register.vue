@@ -1,27 +1,32 @@
 <template>
   <div class="register-form">
-    <el-form>
-      <h3>Register yourself from here :</h3>
-      <el-form-item label="Email">
-        <el-input v-model="email" ></el-input>
-      </el-form-item>
-      <el-form-item label="Password">
-        <el-input v-model="password" type="password" ></el-input>
-      </el-form-item>
-      <div  v-if="errs.length" v-for="err in errs"  v-bind:key="err">
-        <el-alert :title="err" type="error"></el-alert>
-        <br>
+    <panel title="Register here" width="45vw">
+      <div slot="body">
+        <el-form>
+          <el-form-item label="Email">
+            <el-input v-model="email" ></el-input>
+          </el-form-item>
+          <el-form-item label="Password">
+            <el-input v-model="password" type="password" ></el-input>
+          </el-form-item>
+          <div  v-if="errs.length" v-for="err in errs"  v-bind:key="err">
+            <el-alert :title="err" type="error"></el-alert>
+            <br>
+          </div>
+          <el-button type="primary" @click="registerUser">Register</el-button>
+        </el-form>
       </div>
-      <el-button @click="registerUser">Register</el-button>
-    </el-form>
+    </panel>
   </div>
 </template>
 
 <script>
 import authenticationService from '@/services/authenticationService'
+import Panel from './Panel'
 
 export default {
-  name: 'register',
+  name: 'Register',
+  components: { Panel },
   data () {
     return {
       email: '',
@@ -49,7 +54,7 @@ export default {
 <style scoped>
   .register-form {
     max-width: 50%;
-    margin: 10rem auto;
+    margin: 7.5rem auto;
   }
 </style>
 

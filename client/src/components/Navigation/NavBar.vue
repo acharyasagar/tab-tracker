@@ -1,17 +1,35 @@
 <template>
   <div class="nav">
-    <nav-left class="nav-item nav-item__left"></nav-left>
+    <div class="nav-item nav-item__left">
+      <a @click="navigateTo('/')">
+      <img src="./../../assets/logo.png" alt="Logo">
+    </a>
+    <a class="browse-btn" :class="isActive ? 'active': ''" @click="navigateTo('songs')">Browse</a>
+    </div>
     <nav-right class="nav-item nav-item__right"></nav-right>
   </div>
 </template>
 
 <script>
 import NavRight from './NavRight'
-import NavLeft from './NavLeft'
+import { mapState } from 'vuex';
 
 export default {
   name: 'NavBar',
-  components: { NavRight, NavLeft }
+  components: { NavRight },
+  computed: {
+    ...mapState(['route']),
+    isActive () {
+      return this.route.fullPath === '/songs'
+    }
+  },
+  methods: {
+    navigateTo (route) {
+      this.$router.push({
+        name: route
+      })
+    }
+  }
 }
 </script>
 
@@ -36,6 +54,23 @@ export default {
 
   .nav-item__left {
     text-align: left;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+  }
+
+  .browse-btn {
+    color: rgb(15, 124, 198);
+    padding: 0.8rem 1.2rem 0.4rem 1.2rem;
+    border: none;
+    background: #fff;
+    font-family: 'Dosis', sans-serif;
+    box-sizing: border-box;
+    height: 4.4rem;
+    font-size: 1.6rem;
+  }
+  .browse-btn:hover, .active {
+    border-bottom: 2px solid rgb(15, 124, 198);
   }
 </style>
 

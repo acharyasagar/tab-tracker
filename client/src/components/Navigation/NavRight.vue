@@ -16,10 +16,11 @@
       @click="navigateTo('register')">
         Sign up
     </el-button>
-      <el-button 
+    <el-button 
       v-if="isAuthenticated"
       id="logout-btn"
       type="primary" 
+      @click="logout"
       plain>
         Log out
     </el-button>
@@ -39,8 +40,15 @@ export default {
   },
   methods: {
     navigateTo (route) {
-      this.$router.push(route)
+      this.$router.push({
+        name: route
+      })
     },
+    logout () {
+      this.$store.dispatch('setToken', null)
+      this.$store.dispatch('setUser', null)
+      this.$router.push('/')
+    }
   }
 }
 </script>

@@ -1,27 +1,32 @@
 <template>
   <div class="login">
-    <h3>Enter your login credentials here:</h3>
-    <el-form action="" class="login-form" >
-      <el-form-item label="Email" >
-        <el-input v-model="email"></el-input>
-      </el-form-item>
-      <el-form-item label="Password" >
-        <el-input type="password" v-model="password"></el-input>
-      </el-form-item>
-      <div v-if="err" v-for="err in errs" v-bind:key="err">
-        <el-alert :title="err" type="error"></el-alert>
-        <br>
+    <panel title="Log in" width="45vw">
+      <div slot="body">
+      <el-form  class="login-form" >
+        <el-form-item label="Email" >
+          <el-input v-model="email"></el-input>
+        </el-form-item>
+        <el-form-item label="Password" >
+          <el-input type="password" v-model="password"></el-input>
+        </el-form-item>
+        <div v-if="err" v-for="err in errs" v-bind:key="err">
+          <el-alert :title="err" type="error"></el-alert>
+          <br>
+        </div>
+        <el-button type="primary" @click="loginUser">Log in</el-button>
+      </el-form>
       </div>
-      <el-button type="primary" @click="loginUser">Log in</el-button>
-    </el-form>
+    </panel>
   </div>
 </template>
 
 <script>
 import authenticationService from '@/services/authenticationService'
+import Panel from './Panel'
 
 export default {
   name: 'Login',
+  components: { Panel },
   data () {
     return {
       email: null,
@@ -49,7 +54,7 @@ export default {
 
 <style scoped>
   .login {
-    margin: 10rem auto;
+    margin: 7.5rem auto;
     width: 50%;
   }
 </style>
