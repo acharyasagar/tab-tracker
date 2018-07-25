@@ -8,6 +8,11 @@ import router from './router'
 import store from './store/store' 
 import 'element-ui/lib/theme-chalk/index.css';
 
+// Global Custom Components
+import Panel from '@/components/Panel'
+
+Vue.component('panel', Panel)
+
 Vue.use(ElementUI)
 
 Vue.config.productionTip = false

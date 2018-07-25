@@ -11,15 +11,28 @@
               <div class="song-artist">
                 {{ song.artist }}
               </div>
-              <div class="song-album">
-                {{ song.album }}
+              <div class="song-genre">
+                {{ song.genre }}
               </div>
               <div>
-                <el-button type="primary" size="medium">View More</el-button>
+                <el-button 
+                  type="primary" 
+                  size="medium"
+                  @click="navigateTo({
+                    name: 'song',
+                    params: {
+                      songId: song.id
+                    }
+                  })">
+                    View More</el-button>
               </div>
             </el-col>
             <el-col :span="6">
               <img :src="song.albumImage" class="album-image" alt="Album Image">
+              <br>
+              <div class="song-album">
+                {{ song.album }}
+              </div>
             </el-col>
           </el-row>
         </div>
@@ -59,12 +72,10 @@
 </template>
 
 <script>
-import Panel from '@/components/Panel'
 import songsService from '@/services/songsService'
 
 export default {
   name: 'Songs',
-  components: { Panel },
   data () {
     return {
       songs: null
@@ -73,7 +84,8 @@ export default {
   methods: {
     navigateTo (route) {
       this.$router.push({
-        name: route
+        name: route.name || route,
+        params:  route.params || {}
       })
     }
   },
@@ -112,10 +124,15 @@ export default {
   .song-list__item {
     overflow: hidden;
     box-sizing: border-box;
-    height: 17rem;
+    height: 20rem;
     margin-bottom: 0.5rem;
     background: rgba(242, 243, 244, 0.8);
     padding: 1rem;
+  }
+  .el-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
   .song-metadata {
     height: 95%;
@@ -131,11 +148,16 @@ export default {
   .song-artist {
     font-size: 2.4rem;
   }
-  .song-album {
+  .song-album, .song-genre {
     font-size: 1.8rem;
+  }
+  .song-album {
+    text-align: center;
   }
 
   .album-image {
+    display: block;
+    margin: 0 auto;
     width: auto;
     height: 15rem;
   }

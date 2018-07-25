@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: 'Panel',
+  name: 'panel',
   props: ['title', 'width'],
   data () {
     return {
@@ -31,7 +31,8 @@ export default {
   }
 
   .box-card {
-    padding: 0 2rem 7rem 2rem;;
+    height: 100%;
+    padding: 0 2rem 5.6rem 2rem;;
     margin: 1rem auto;
   }
   h3 {

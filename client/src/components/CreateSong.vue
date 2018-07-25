@@ -33,7 +33,7 @@
       </panel>
     </el-col>
     <el-col :md="12" :sm="24" >
-    <panel title="Song Structure" width="90%">
+      <panel title="Song Structure" width="90%">
         <div slot="body">
           <el-form
           ref="form"
@@ -42,11 +42,11 @@
           label-position="left" 
           label-width="9rem"
           class="create-song__form">
-            <el-form-item label="Lyrics:" size="medium" prop="lyrics">
-              <el-input type="textarea"  v-model="song.lyrics"></el-input>
+            <el-form-item label="Lyrics:" size="mini" prop="lyrics">
+              <el-input type="textarea" v-model="song.lyrics" :autosize="{ minRows: 10, maxRows: 10}"></el-input>
             </el-form-item>
-            <el-form-item label="Tab:" size="medium"  prop="tab">
-              <el-input type="textarea" v-model="song.tab"></el-input>
+            <el-form-item label="Tab:" prop="tab">
+              <el-input type="textarea" v-model="song.tab" :autosize="{ minRows: 10, maxRows: 10}"></el-input>
             </el-form-item>
             <el-button type="submit" class="btn" @click="validateForm('form')">Create Song</el-button>
           </el-form>
@@ -57,12 +57,10 @@
 </template>
 
 <script>
-import Panel from '@/components/Panel'
 import songsService from '@/services/songsService'
 
 export default {
   name: 'CreateSong',
-  components: { Panel },
   data () {
     return {
       song: {
@@ -111,14 +109,26 @@ export default {
 </script>
 
 <style scoped>
+  .el-row {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+  }
   .create-song {
-    width: 80vw;
-    margin: 7.5rem auto;
+    margin: 7.2rem auto;
+  }
+
+  .el-form-item {
+    margin: 4.0rem 0;
   }
   .el-button {
     display: block;
     width: 12rem;
     margin: auto;
+  }
+
+  .el-textarea__inner {
+    height: 25rem !important;
   }
 
 </style>

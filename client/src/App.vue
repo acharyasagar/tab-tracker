@@ -20,4 +20,9 @@ export default {
     margin-top: 2.4rem;
   }
 
+  .lead {
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+
 </style>

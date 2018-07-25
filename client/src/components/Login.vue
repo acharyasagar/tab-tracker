@@ -22,11 +22,9 @@
 
 <script>
 import authenticationService from '@/services/authenticationService'
-import Panel from './Panel'
 
 export default {
   name: 'Login',
-  components: { Panel },
   data () {
     return {
       email: null,
