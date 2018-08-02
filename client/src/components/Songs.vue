@@ -24,7 +24,8 @@
                       songId: song.id
                     }
                   })">
-                    View More</el-button>
+                    View More
+                </el-button>
               </div>
             </el-col>
             <el-col :span="6">
@@ -72,16 +73,23 @@
 </template>
 
 <script>
-import songsService from '@/services/songsService'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'Songs',
   data () {
     return {
-      songs: null
+  
+    }
+  },
+  computed: {
+    ...mapState(['_song']),
+    songs() {
+      return this._song.songs
     }
   },
   methods: {
+    ...mapActions(['getSongs']),
     navigateTo (route) {
       this.$router.push({
         name: route.name || route,
@@ -89,9 +97,9 @@ export default {
       })
     }
   },
-  async created () {
+  mounted () {
     // Go fetch the default songs 
-    this.songs = (await songsService.index()).data
+    this.getSongs()
   } 
 }
 </script>

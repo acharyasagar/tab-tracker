@@ -12,5 +12,6 @@ router.route('/')
 
 router.route('/:songId')
   .get(songsController.show)
+  .put(songsController.put)
 
 module.exports = router

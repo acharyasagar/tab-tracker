@@ -1,19 +1,19 @@
 <template>
-  <div v-if="song.song">
+  <div v-if="song">
     <el-row  style="margin: 3.2rem auto">
       <el-col :md="12" :sm="24">
-        <song-metadata :song="song.song"></song-metadata>
+        <song-metadata :song="song"></song-metadata>
       </el-col>
       <el-col :md="12" :sm="24" gutter="20">
-        <youtube :song="song.song"> </youtube>
+        <youtube :song="song"> </youtube>
       </el-col>
     </el-row>
     <el-row style="margin: auto">
       <el-col :md="12" :sm="24">
-        <lyrics :song="song.song"></lyrics>
+        <lyrics :song="song"></lyrics>
       </el-col>
       <el-col :md="12" :sm="24" gutter="20">
-        <tab :song="song.song"> </tab>
+        <tab :song="song"> </tab>
       </el-col>
     </el-row>
   </div>
@@ -30,7 +30,10 @@ export default {
   name: 'Song',
   components: { SongMetadata, Youtube, Lyrics, Tab },
   computed: {
-    ...mapState(['song'])
+    ...mapState(['_song']),
+    song() {
+      return this._song.song
+    }
   },
   methods: {
     ...mapActions(['getSongById'])

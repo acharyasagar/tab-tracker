@@ -12,6 +12,19 @@
             <div class="song-genre">
               {{ song.genre }}
             </div>
+            <div>
+              <el-button 
+                type="primary" 
+                size="medium"
+                @click="navigateTo({
+                  name: 'song-edit',
+                  params: {
+                    songId: song.id
+                  }
+                })">
+                  Edit
+              </el-button>
+            </div>
           </el-col>
         <el-col :span="8">
           <img :src="song.albumImage" class="album-image" alt="Album Image">
@@ -29,6 +42,14 @@
 export default {
   name: 'SongMetadata',
   props: ['song'],
+  methods: {
+    navigateTo (route) {
+      this.$router.push({
+        name: route.name || route,
+        params:  route.params || {}
+      })
+    }
+  }
 }
 </script>
 

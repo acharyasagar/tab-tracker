@@ -33,9 +33,9 @@ import { mapState } from 'vuex'
 export default {
   name: 'NavRight',
   computed: {
-    ...mapState(['auth']),
+    ...mapState(['_auth']),
     isAuthenticated() {
-      return this.auth.isAuthenticated
+      return this._auth.isAuthenticated
     }
   },
   methods: {

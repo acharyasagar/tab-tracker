@@ -22,7 +22,6 @@ export default {
 
   .lead {
     font-size: 1.4rem;
-    font-weight: 600;
   }
 
 </style>
