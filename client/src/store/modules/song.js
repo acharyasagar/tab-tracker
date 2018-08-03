@@ -25,7 +25,7 @@ const actions = {
   },
   async editSong({ commit, dispatch }, payload) {
     const { songId, data } = payload
-    songsService.put(songId, data).then(response => {
+    songsService.edit(songId, data).then(response => {
       commit('UPDATE_SONG', JSON.parse(response.config.data))
       dispatch('getSongs')
     }) 

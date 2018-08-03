@@ -36,7 +36,7 @@ module.exports = {
       })
     }
   },
-  async put(req, res) {
+  async edit(req, res) {
     try {
       const song = await Song.update(req.body, {
         where: {

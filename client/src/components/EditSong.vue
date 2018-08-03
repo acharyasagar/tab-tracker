@@ -95,9 +95,7 @@ export default {
               songId: this.songId,
               data: this.itemToEdit
             })
-            this.$router.push({
-              name: 'songs'
-            })
+            this.$router.go(-1)
           } else {
             throw new Error('Fill in form data')
           }
