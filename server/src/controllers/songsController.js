@@ -2,6 +2,10 @@ const { Song } = require('../models')
 
 module.exports = {
   async index(req, res) {
+    if (req.query.search) {
+      console.log('Query is: ', req.query)
+      return
+    }
     try {
       const songs = await Song.findAll({
         limit: 10
