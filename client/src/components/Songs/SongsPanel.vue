@@ -89,9 +89,13 @@ export default {
       })
     }
   },
-  mounted () {
-    // Go fetch the default songs 
-    this.getSongs(this.$route.fullPath)
+  watch: {
+    '$route.query.search': {
+      immediate: true,
+      async handler (val) {
+        this.getSongs(val)
+      }
+    }
   }
 }
 </script>

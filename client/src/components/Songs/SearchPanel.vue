@@ -22,14 +22,35 @@ export default {
   },
   watch: {
     search (val) {
-      this.$router.push({
-        path: '/songs',
-        query: {
-          search: val
+      /*
+        Initialize a route object to push to router
+      */
+      const route = {
+        name: 'songs'
+      }
+      if(val !== '') {
+        /*
+          If val is non-empty then save it inside route's query and push the route object to the router
+        */
+        route.query = {
+          search: this.search
         }
-      })
-      setInterval(this.getSongs(this.$route.fullPath), 500)
+      }
+      this.$router.push(route)
+    },
+    /*
+      watches for the query value search in the route and immediate true calls the handler function for the current value even on page refresh the handler is invoked with current value
+    */
+    '$route.query.search': {
+      immediate: true,
+      handler (val) {
+        /*
+          sets the current value i.e. val to the search 
+         */
+          this.search = val
+      },
     }
+
   }
 
 }

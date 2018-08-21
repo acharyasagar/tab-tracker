@@ -15,8 +15,9 @@ const mutations = {
 }
 
 const actions = {
-  async getSongs ({ commit }, query) {
-    const payload = (await songsService.index(query)).data
+  async getSongs ({ commit }, search) {
+    // Fetches the songs and saves those fetched songs in state
+    const payload = (await songsService.index(search)).data
     commit('SONGS', payload)
   },
   async getSongById({ commit }, songId) {
