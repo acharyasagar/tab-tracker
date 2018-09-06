@@ -2,13 +2,26 @@ const { Song } = require('../models')
 
 module.exports = {
   async index(req, res) {
+    // abstract the search term from the request
     const { search } = req.query
     try {
+      // Initialize a songs variable which will be populated and sent as a response
       let songs = null
+      // if search contains something perform filteration
       if (search) {
+        // Retrieve all songs array to perform filtration on them
         const allSongs = await Song.findAll({})
+
+        // loop over the all songs to find the matching song to search term
         songs = allSongs.filter((song) => {
+          // save current search term as a regular expression
           const regex = new RegExp(search, 'i')
+
+          /*
+            check on artist, title, genre, album properties of song and if
+            it contains the
+            provided search term in any of those properties return that
+            */
           return Boolean(song.artist.match(regex) ||
             song.title.match(regex) ||
             song.genre.match(regex) ||

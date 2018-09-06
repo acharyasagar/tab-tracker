@@ -90,7 +90,13 @@ export default {
     }
   },
   watch: {
+    /* 
+      Watch the router query's search property and whenever it changes perform a new getsongs request which requests songs to server and udates the songs state 
+    */
     '$route.query.search': {
+      /*
+        immediate true invokes the handler for the current value also, hence the handler is invoked on every page refresh 
+      */
       immediate: true,
       async handler (val) {
         this.getSongs(val)

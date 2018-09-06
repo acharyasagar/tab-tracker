@@ -9,6 +9,7 @@
 
 <script>
 import { mapActions } from 'vuex'
+import debounce from './debounce'
 
 export default {
   name: 'SongsPanel',
@@ -21,7 +22,7 @@ export default {
     ...mapActions(['getSongs'])
   },
   watch: {
-    search (val) {
+   search: debounce(function(val) {
       /*
         Initialize a route object to push to router
       */
@@ -37,7 +38,7 @@ export default {
         }
       }
       this.$router.push(route)
-    },
+    }, 500),
     /*
       watches for the query value search in the route and immediate true calls the handler function for the current value even on page refresh the handler is invoked with current value
     */
