@@ -1,0 +1,11 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "outDir": "dist"
+  },
+  "include": [
+    "src/**/*.ts", "src/config/index.js"
+  ]
+}
