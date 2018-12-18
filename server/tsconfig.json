@@ -3,7 +3,9 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es6",
-    "outDir": "dist"
+    "outDir": "dist",
+    "esModuleInterop": true,
+    "strictNullChecks": true
   },
   "include": [
     "src/**/*.ts", "src/config/index.js"
