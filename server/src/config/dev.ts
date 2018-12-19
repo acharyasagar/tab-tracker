@@ -1,13 +1,12 @@
 export =  {
   port: 8081,
-  db: {
+  dbConnectionOptions: {
+    type: 'postgres',
+    host: 'localhost',
+    port: 5432,
     database: 'tabtracker',
-    user: 'tabtracker',
+    username: 'tabtracker',
     password: 'tabtracker',
-    options: {
-      dialect: 'postgres',
-      host: 'localhost',
-    }
   },
   authentication: {
     jwtSecret: 'd3v-s3cr3t-k3y'

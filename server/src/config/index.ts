@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const env = process.env.ENV;
-const envConfig = require(`./${env}`);
+const env: string | undefined = process.env.ENV;
+const envConfig: object = require(`./${env}`);
 
-export = envConfig;
+export default envConfig;
