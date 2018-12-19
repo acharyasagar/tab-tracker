@@ -1,10 +1,10 @@
-import express from 'express'
+import express from 'express';
 
 const router: express.Router = express.Router();
 
 router.route('/')
   .get((req, res) => {
-    res.send('Hello world');
+    res.send('home');
   })
 
 export = router;

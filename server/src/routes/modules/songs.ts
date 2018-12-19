@@ -14,4 +14,4 @@ router.route('/:songId')
   .get(songsController.show)
   .put(songsController.edit)
 
-module.exports = router
+export = router;
