@@ -4,7 +4,5 @@ import authenticationControllerPolicy from '../../policies/AuthenticationControl
 
 const router: express.Router = express.Router();
 router.route('/')
-
   .post(authenticationControllerPolicy.register, authenticationController.register);
-
 export = router;
