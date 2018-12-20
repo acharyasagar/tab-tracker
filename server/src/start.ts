@@ -2,6 +2,7 @@ import helmet from 'helmet';
 import compression from 'compression';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import 'reflect-metadata';
 
 import apiServer from './api-server';
 import dbManager from './db-manager';
@@ -14,6 +15,8 @@ const server = new apiServer(config);
 
 // Dabatase instance
 const database = new dbManager(config);
+
+// Establishes connecction and starts the api server
 database.establishConnection()
   .then(connection => {
     console.log('\n Database Connection established successfully.\n');
