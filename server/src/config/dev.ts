@@ -1,4 +1,22 @@
-export =  {
+interface IDbConnectionOptions {
+  type: string;
+  host: string;
+  port: Number,
+  database: string;
+  username: string;
+  password: string;
+  synchronize: boolean;
+}
+interface IAuthentication {
+  jwtSecret: string;
+}
+interface IConfig {
+  port: Number;
+  dbConnectionOptions: IDbConnectionOptions;
+  authentication: IAuthentication;
+}
+
+const config:IConfig =  {
   port: 8081,
   dbConnectionOptions: {
     type: 'postgres',
@@ -7,28 +25,11 @@ export =  {
     database: 'tabtracker',
     username: 'tabtracker',
     password: 'tabtracker',
+    synchronize: true
   },
   authentication: {
     jwtSecret: 'd3v-s3cr3t-k3y'
   }
 }
 
-// For future reference
-/*
-  port:  process.env.PORT || 8081,
-  db: {
-    database: process.env.DB_NAME || 'tabtracker',
-    user: process.env.DB_USER || 'tabtracker',
-    password: process.env.DB_PASS || 'tabtracker',
-    options: {
-      dialect: process.env.DIALECT || 'postgres',
-      host: process.env.HOST || 'localhost',
-      define: {
-        timestamps: false
-      }
-    }
-  },
-  authentication: {
-    jwtSecret: process.env.JWT_SECRET || 'd3v-s3cr3t-k3y'
-  }
-*/
+export = config;
