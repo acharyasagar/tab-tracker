@@ -1,22 +1,6 @@
-interface IDbConnectionOptions {
-  type: string;
-  host: string;
-  port: Number,
-  database: string;
-  username: string;
-  password: string;
-  synchronize: boolean;
-}
-interface IAuthentication {
-  jwtSecret: string;
-}
-interface IConfig {
-  port: Number;
-  dbConnectionOptions: IDbConnectionOptions;
-  authentication: IAuthentication;
-}
+import { IConfig } from '../types/config';
 
-const config:IConfig =  {
+const config:IConfig = {
   port: 8081,
   dbConnectionOptions: {
     type: 'postgres',
@@ -28,7 +12,10 @@ const config:IConfig =  {
     synchronize: true
   },
   authentication: {
-    jwtSecret: 'd3v-s3cr3t-k3y'
+    jwtSecret: 'd3v-s3cr3t-k3y',
+    jwtOptions: {
+      expiresIn: '2 days'
+    }
   }
 }
 
