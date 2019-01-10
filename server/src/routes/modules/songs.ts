@@ -1,10 +1,7 @@
-/* eslint-disable */
-const
-  express = require('express'),
-  router = express.Router(),
-  songsController = require('../../controllers/songsController')
+import express from 'express'
+import songsController from '../../controllers/songs-controller';
 
-/* eslint-enable */
+const   router = express.Router();
 
 router.route('/')
   .get(songsController.index)

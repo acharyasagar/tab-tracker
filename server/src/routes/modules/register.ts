@@ -1,8 +1,7 @@
 import express from 'express';
-import authenticationController from '../../controllers/authenticationController';
-import authenticationControllerPolicy from '../../policies/AuthenticationControllerPolicy';
+import authenticationController from '../../controllers/authentication-controller';
 
 const router: express.Router = express.Router();
 router.route('/')
-  .post(authenticationControllerPolicy.register, authenticationController.register);
+  .post(authenticationController.register);
 export = router;
