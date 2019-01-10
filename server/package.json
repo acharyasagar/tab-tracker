@@ -4,8 +4,9 @@
   "description": "A back-end for tab-tracker application",
   "main": "server.js",
   "scripts": {
-    "build": "rm -rf src/dist && tsc --watch",
-    "start": "nodemon dist/start.js"
+    "build": "npm run clean && tsc --watch",
+    "start": "nodemon dist/start.js",
+    "clean": "rm -rf dist"
   },
   "author": "Sagar Acharya",
   "license": "MIT",
