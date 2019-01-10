@@ -15,12 +15,7 @@ const actions = {
 
 const mutations = {
   SET_TOKEN (state, token) {
-    if(token) {
-      state.isAuthenticated = true
-    }
-    else {
-      state.isAuthenticated = false
-    }
+    state.isAuthenticated = !!(token)
     state.token = token
   },
   SET_USER (state, user) {

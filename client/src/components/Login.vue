@@ -39,11 +39,15 @@ export default {
           email: this.email, 
           password: this.password 
         })
+        console.log(response.data.user);
         this.$store.dispatch('setToken', response.data.token)
         this.$store.dispatch('setUser', response.data.user)
+        this.$router.push({
+          name: 'songs'
+        })
       }
       catch (err) {
-        this.errs = err.response.data.error
+        this.errs = err.response.data.err
       }
     }
   }
