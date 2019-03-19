@@ -1,6 +1,6 @@
-import { IConfig } from '../types/config';
+import { IConfig } from '../types/config'
 
-const config:IConfig = {
+const config: IConfig = {
   port: 8081,
   dbConnectionOptions: {
     type: 'postgres',
@@ -9,14 +9,14 @@ const config:IConfig = {
     database: 'tabtracker',
     username: 'tabtracker',
     password: 'tabtracker',
-    synchronize: true
+    synchronize: true,
   },
   authentication: {
     jwtSecret: 'd3v-s3cr3t-k3y',
     jwtOptions: {
-      expiresIn: '2 days'
-    }
-  }
+      expiresIn: '2 days',
+    },
+  },
 }
 
-export = config;
+export = config

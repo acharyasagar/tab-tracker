@@ -1,33 +1,33 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
 
 @Entity('Songs')
 export class Song {
 
   @PrimaryGeneratedColumn()
-  id: number;
+  public id: number
 
   @Column()
-  title: string;
+  public title: string
 
   @Column()
-  artist: string;
+  public artist: string
 
   @Column()
-  genre: string;
+  public genre: string
 
   @Column()
-  album: string;
+  public album: string
 
   @Column()
-  albumImage: string;
+  public albumImage: string
 
   @Column()
-  youtubeId: string;
+  public youtubeId: string
 
   @Column('text')
-  lyrics: string;
+  public lyrics: string
 
   @Column('text')
-  tab: string
-  
+  public tab: string
+
 }

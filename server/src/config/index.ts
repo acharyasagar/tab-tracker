@@ -1,6 +1,8 @@
-require('dotenv').config();
+// tslint:disable-next-line
+require('dotenv').config()
 
-const env: string | undefined = process.env.ENV;
-const envConfig: object = require(`./${env}`);
+const env: string | undefined = process.env.ENV
+// tslint:disable-next-line
+const envConfig: object = require(`./${env}`)
 
-export = envConfig;
+export = envConfig
